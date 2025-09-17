@@ -10,8 +10,15 @@ function App() {
   const [page, setPage] = useState(1)
 
   useEffect(() => {
-    fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json').then(data => data.json())
-    .then(data => setAllData(data)).catch(error => alert(error))
+    fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch data")
+        }
+        return response.json()
+      })
+      .then(data => setAllData(data))
+      .catch(error => alert(error.message))
   }, [])
 
   useEffect(() => {
