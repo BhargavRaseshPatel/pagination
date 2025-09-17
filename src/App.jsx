@@ -10,7 +10,8 @@ function App() {
   const [page, setPage] = useState(1)
 
   useEffect(() => {
-    fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json').then(data => data.json()).then(data => setAllData(data)).catch(error => console.error(error))
+    fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json').then(data => data.json())
+    .then(data => setAllData(data)).catch(error => alert(error))
 
     console.log(allData)
     displayData.push(allData[0])
